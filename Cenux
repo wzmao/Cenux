@@ -1,0 +1,41 @@
+#!/usr/bin/env python  
+from os import popen
+from sys import argv
+
+if len(argv)==1 or any([i in argv[1:] for i in ["-h", "--h", "-help","--help"]]):
+	if any([i in argv[1:] for i in ["-h", "--h", "-help","--help"]]) and len(argv)!=2:
+		print '''\x1b\x5b31;1mWrong option provided.{0}'''
+	print '''This is a easy OI judge software for Linux.
+You could use the commands below ({1}Compulsory{0} {3}vs.{0} {2}Optional{0}):
+	init	Creat a new competition file (path needed)
+	      Example: Cenux init {1}-n name{0}
+	                          {2}-p path (Defalut pwd){0}
+	addq	Add a question to the competition
+	      Example: Cenux addq {2}-p path (Competition file path or searching in pwd){0}
+	                          {2}-n qname (Defalut as question number){0}
+	                          {2}-t timelimit (Defalut 1s){0}
+	                          {2}-m memorylimit (unit:MB, Defalut 128MB){0}
+	adddp	Add data point for a question
+	      Example: Cenux adddp {2}-p path (Competition file path or searching in pwd){0}
+	                           {1}-n qname (The question name or number){0}
+	                           {1}-i path (input path){0}
+	                           {1}-o path (output path){0}
+	                           {1}-s score (the score for the datapoint){0}
+	                           {2}-a auto (0 or 1, Defalut as 1, will add similar files together){0}
+	collect	Collect program for the competition
+	      Cenux will scan all subfolder to collect the programs.
+	      Programs should have the same name as question name with suffix(.c, .cpp, .pas).
+	      Example: Cenux collect {2}-p path (Competition file path or searching in pwd){0}
+	                             {1}-sp seacchingpath (searching folder){0}
+	                             {2}-n username (Defalut as number){0}
+	test	Score the result
+	      Example: Cenux test {2}-aq allquestion (1 or 0, Defalut as 1){0}
+	                          {2}-au alluser (1 or 0, Defalut as 1){0}
+	                          {2}-q questionname (Test some questions. If specific, aq will be 0){0}
+	                          {2}-u username (Test some users. If specific, au will be 0){0}
+	result	See the score (Just present the result)
+	       Example: Cenux result {2}-aq allquestion (1 or 0, Defalut as 1){0}
+	                             {2}-au alluser (1 or 0, Defalut as 1){0}
+	                             {2}-q questionname (Test some questions. If specific, aq will be 0){0}
+	                             {2}-u username (Test some users. If specific, au will be 0){0}'''.format("\x1b\x5b0m","\x1b\x5b35;1m","\x1b\x5b34;1;3;4m","\x1b\x5b3m")
+	exit(0)
