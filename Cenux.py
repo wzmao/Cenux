@@ -269,20 +269,6 @@ class Cenux_user(object):
         self.code = []
         self.result = []
 
-    # def add_competition(self, path, question, exp=['.c', '.cpp', '.c++', '.pas'], **kwargs):
-    #     if not all([isinstance(Cenux_question) for i in question]):
-    #         raise ValueError("You must provide a question list.")
-    #     for i in question:
-    #         temp = __searchfile(path, i.sourcefilename, exp)
-    #         if len(temp) == 0:
-    #             self.add_code(None)
-    #         elif len(temp) == 1:
-    #             self.add_code(os.path.relpath(temp[0], self.abspath))
-    #         else:
-    #             print '## There are more than one file for question {0}'.format(i.name)
-    #             print '## You could set exp option.'
-    #             self.
-
 
 class Cenux_competition(object):
 
@@ -364,9 +350,9 @@ class Cenux_competition(object):
         except:
             raise ValueError("The index couldn't be recognized.")
         for i in self.question:
-            temp=__searchfile(path,i.sourcefilename,exp)
+            temp = __searchfile(path, i.sourcefilename, exp)
             if len(temp) == 0:
-                self.user[i].code+=[None]
+                self.user[i].code += [None]
             elif len(temp) == 1:
                 # self.user[i].code+=[None]
                 self.add_code(os.path.relpath(temp[0], self.abspath))
@@ -374,4 +360,3 @@ class Cenux_competition(object):
                 print '## There are more than one file for question {0}'.format(i.name)
                 print '## You could set exp option.'
                 for j in self.user[i].code:
-                    
